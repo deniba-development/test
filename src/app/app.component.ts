@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test';
+  content:any;
+  constructor(public http: ApiService) {}
+
+  test() {
+    this.http.test().then((el) => {
+      this.content = el;
+    }).catch((error)=> {
+      this.content = error;
+    })
+  }
+
 }
