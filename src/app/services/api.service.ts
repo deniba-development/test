@@ -22,8 +22,8 @@ export class ApiService {
           "Filiale": ""
       }​​​​​​​​​​​​​​​​​​​​​​​​​
     }​​​​​​​​​​​​​​​​​​​​​​​​​;
-    const headers = new HttpHeaders({'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*'});
+    const headers = new HttpHeaders({'Content-Type':'application/json'});
     let options = { headers,withCredentials:false};
-    return this.http.post(this.baseURL+"deniba",body, options).toPromise();
+    return this.http.post(this.baseURL+"deniba",body).toPromise();
   }
 }
