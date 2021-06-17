@@ -9,31 +9,6 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
 }
-.button-one, .button-two, .button-three{
-    text-align: center;
-    cursor: pointer;
-    font-size:24px;
-    margin: 0 0 0 100px;
-  }
-.button-one {
-    padding:20px 60px;
-    outline: none;
-    background-color: #27ae60;
-    border: none;
-    border-radius:5px;
-    box-shadow: 0 9px #7f8c8d;
-  }
-  
-  .button-one:hover{
-    background-color: #2ecc71;
-  }
-  
-  .button-one:active {
-    background-color: #2ecc71;
-    box-shadow: 0 5px #7f8c8d;
-    transform: translateY(4px);
-  }
-
   h1 {
     margin: 0;
     line-height: 2;
@@ -48,78 +23,26 @@ body {
     opacity: 0;
     z-index: -1;
  }
+
+ /*GRID SYSTEM */
   .row {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
  }
   .row .col {
+    /* margin-left: 1em; */
     flex: 1;
+    /* width: 16.66%; */
  }
-  .row .col:last-child {
+  /* .row .col:last-child {
     margin-left: 1em;
- }
- /* Accordion styles */
-  .tabs {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
- }
-  .tab {
-    width: 100%;
-    color: white;
-    overflow: hidden;
- }
-  .tab-label {
-    display: flex;
-    justify-content: space-between;
-    padding: 1em;
-    background: #2c3e50;
-    font-weight: bold;
-    cursor: pointer;
-   /* Icon */
- }
-  .tab-label:hover {
-    background: #1a252f;
- }
-  .tab-label::after {
-    content: "\276F";
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    transition: all 0.35s;
- }
-  .tab-content {
-    max-height: 0;
-    padding: 0 1em;
-    color: #2c3e50;
-    background: white;
-    transition: all 0.35s;
- }
-  .tab-close {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1em;
-    font-size: 0.75em;
-    background: #2c3e50;
-    cursor: pointer;
- }
-  .tab-close:hover {
-    background: #1a252f;
- }
-  input:checked + .tab-label {
-    background: #1a252f;
- }
-  input:checked + .tab-label::after {
-    transform: rotate(90deg);
- }
-  input:checked ~ .tab-content {
-    max-height: 100vh;
-    padding: 1em;
- }
-  
+ } */
+ 
 
  /* PRELOADER */ 
 
- .fond{position:absolute;padding-top:85px;top:0;left:0; right:0;bottom:0;}
+ .fond{position:absolute;top:50%;left:50%; right:0;bottom:0;}
 
 .contener_general
 {
@@ -216,4 +139,172 @@ body {
   0%{transform:rotate(0deg) scale(1);}
   50%{transform:rotate(360deg) scale(1.3);}
   100%{transform:rotate(720deg) scale(1);}
+}
+
+
+/*TABS */
+/*
+ CSS for the main interaction
+*/
+.tabset > input[type="radio"] {
+  position: absolute;
+  left: -200vw;
+}
+
+.tabset .tab-panel {
+  display: none;
+}
+
+.tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
+.tabset > input:nth-child(3):checked ~ .tab-panels > .tab-panel:nth-child(2),
+.tabset > input:nth-child(5):checked ~ .tab-panels > .tab-panel:nth-child(3),
+.tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
+.tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
+.tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
+  display: block;
+}
+
+/*
+ Styling
+*/
+body {
+  font: 16px/1.5em "Overpass", "Open Sans", Helvetica, sans-serif;
+  color: #333;
+  font-weight: 300;
+}
+
+.tabset > label {
+  position: relative;
+  display: inline-block;
+  padding: 15px 15px 25px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabset > label::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 10px;
+  width: 22px;
+  height: 4px;
+  background: #7f8c8d;
+}
+
+.tabset > label:hover,
+.tabset > input:focus + label {
+  color: #3498db;
+}
+
+.tabset > label:hover::after,
+.tabset > input:focus + label::after,
+.tabset > input:checked + label::after {
+  background: #3498db;
+}
+
+.tabset > input:checked + label {
+  border-color: #ccc;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+}
+
+.tab-panel {
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
+}
+
+/*
+ Demo purposes only
+*/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+}
+
+.tabset {
+  max-width: 65em;
+}
+
+/*CARDS */ 
+
+
+.card {
+  background: white;
+  height: 400px;
+  transition: 0.6s all ease;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+/* I used background url to allow me to change the height and width without needing extra css */
+
+.cardTop {
+  transition: 0.4s all ease;
+  height: 65%;
+  background: url("https://i.ytimg.com/vi/lt0WQ8JzLz4/maxresdefault.jpg")
+    no-repeat;
+}
+
+.cardBottom {
+  height: 35%;
+  text-wrap: normal;
+  transition: 0.4s all ease;
+}
+
+.cardText {
+  min-height: 100%;
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cardInfo {
+  padding-top: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: orange;
+}
+
+/* Hidding the entire so anything we put in will only show on hover */
+
+.cardHoverText {
+  visibility: hidden;
+}
+
+/* Hover affects */
+
+.card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Using className + hover followed by child element allows you to change child elements when parent is hovered */
+
+.card:hover .cardHoverText {
+  visibility: visible;
+  transition: 0.4s all ease;
+  transition-delay: 0.1999s;
+}
+
+.card:hover .cardBottom {
+  transition: 0.4s all ease;
+  height: 65%;
+  opacity: 1;
+}
+
+.card:hover .cardTop {
+  height: 35%;
+  opacity: 0.8;
+  transition: 0.4s all ease;
 }

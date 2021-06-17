@@ -8,10 +8,10 @@ export class ApiService {
   baseURL = 'http://srv1.deniba.at:1984/';
   constructor(private http : HttpClient) { }
 
-  test() {
+  test(type:string) {
     let body = {​​​​
       "MetaInfo": {​​​​​​​​​​​​​​​​​​​​​​​​​
-          "Object": "Filiale",
+          "Object": type, //"Filiale"
           "Action": "query",
           "Offset": "0",
           "MaxRows": "20"

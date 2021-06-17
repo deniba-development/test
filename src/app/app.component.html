@@ -1,5 +1,15 @@
-<div class="center"> 
-    <div class="fond" *ngIf="prelaoder">
+<div class="tabset">
+  <!-- Tab 1 -->
+  <input type="radio" name="tabset" (click)="type='Filiale';load()" id="tab1" aria-controls="marzen" checked>
+  <label for="tab1">Filialen </label>
+  <!-- Tab 2 -->
+  <input type="radio" name="tabset" (click)="type='Kunde';load()" id="tab2" aria-controls="rauchbier">
+  <label for="tab2">Kunden</label>
+  <!-- Tab 3 -->
+  <input type="radio" name="tabset" (click)="type='Modell';load()" id="tab3" aria-controls="dunkles">
+  <label for="tab3">Modelle</label>
+  
+  <div class="fond" *ngIf="prelaoder">
     <div class="contener_general">
         <div class="contener_mixte"><div class="ballcolor ball_1">&nbsp;</div></div>
         <div class="contener_mixte"><div class="ballcolor ball_2">&nbsp;</div></div>
@@ -7,33 +17,81 @@
         <div class="contener_mixte"><div class="ballcolor ball_4">&nbsp;</div></div>
     </div>
     </div>
-  <div *ngIf="!prelaoder">
-    <h1>Filialen</h1>
-    <div class="row">
-      <div class="col">
-        <div class="tabs">
-          <div class="tab" *ngFor="let filiale of Filialen; let i = index">
-            <input type="radio" [id]="i" name="rd">
-            <label class="tab-label" [for]="i">{{(filiale.Filiale == "") ? 'Keine Filiale definiert' : filiale.Filiale}}</label>
-            <div class="tab-content">
-              <p style="text-align: left;"><b>Abkuerzung:</b> {{filiale.Abkuerzung}}</p>
-              <p style="text-align: left;"><b>FilialeNr:</b> {{filiale.FilialeNr}}</p>
-            </div>
-          </div>
 
-          <div class="tab">
-            <input type="radio" id="rd3" name="rd">
-            <label for="rd3" class="tab-close">Close others &times;</label>
+  <div class="tab-panels" *ngIf="!prelaoder">
+    <section id="marzen" class="tab-panel">
+      <div class="row">
+        <div class="col" *ngFor="let filiale of Filialen; let i = index">
+          <div class="card">
+            <div class="cardTop" [style.background]="randomColor()">
+            </div>
+            <div class="cardBottom">
+              <div class="cardText">
+                <!--       Title and description will always show -->
+                <h3 class="cardTitle">{{(filiale.Filiale == "") ? 'Keine Filiale definiert' : filiale.Filiale}}</h3>
+                <!-- <h4 class="cardInfo">Short Description</h4> -->
+                <!--       Only visibile when parent element is hovered over -->
+                <div class="cardHoverText">
+                  <p style="text-align: left;"><b>Abkuerzung:</b> {{filiale.Abkuerzung}}</p>
+                  <p style="text-align: left;"><b>FilialeNr:</b> {{filiale.FilialeNr}}</p>
+                </div>
+                <!--       Only visibile when parent element is hovered over -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
+    </section>
+    <section id="rauchbier" class="tab-panel">
+      <div class="row">
+        <div class="col" *ngFor="let kunde of Kunden; let i = index">
+          <div class="card">
+            <div class="cardTop" [style.background]="randomColor()">
+            </div>
+            <div class="cardBottom">
+              <div class="cardText">
+                <!--       Title and description will always show -->
+                <h3 class="cardTitle">{{kunde.Vorname + " " + kunde.Nachname}}</h3>
+                <!-- <h4 class="cardInfo">Short Description</h4> -->
+                <!--       Only visibile when parent element is hovered over -->
+                <div class="cardHoverText">
+                  <p style="text-align: left;"><b>Email:</b> {{kunde.Email}}</p>
+                </div>
+                <!--       Only visibile when parent element is hovered over -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="dunkles" class="tab-panel">
+      <div class="row">
+        <div class="col" *ngFor="let modell of Modelle; let i = index">
+          <div class="card">
+            <div class="cardTop" [style.background]="randomColor()">
+            </div>
+            <div class="cardBottom">
+              <div class="cardText">
+                <!--       Title and description will always show -->
+                <h3 class="cardTitle">{{modell.Modell}}</h3>
+                <!-- <h4 class="cardInfo">Short Description</h4> -->
+                <!--       Only visibile when parent element is hovered over -->
+                <div class="cardHoverText">
+                  <p style="text-align: left;"><b>ModellNr:</b> {{modell.ModellNr}}</p>
+                </div>
+                <!--       Only visibile when parent element is hovered over -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-  <!-- <div class="sub-main">
-    <button class="button-one" (click)="test()" style="color: white;">CLICK ME</button>
-  </div> -->
+  
 </div>
+
+
 
 
   
